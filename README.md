@@ -5,4 +5,5 @@
 
 
 ## 🛠 Technology
-- [javascript.js][js]
+* Vue JS
+* JavaScript
