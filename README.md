@@ -5,4 +5,4 @@
 
 
 ## 🛠 Technology
-- [Vue.js][vuejs]
+- [javascript.js][js]
