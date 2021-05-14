@@ -6,7 +6,7 @@
     <ul class="photoList">
       <li class="photo-list-item" v-for="photo of photosFilter">
         <my-panel :title="photo.titulo">
-          <img class="responsive-image" :src="photo.url" :alt="photo.title" />
+          <image-responsive :url="photo.url" :titulo="photo.titulo"/>
         </my-panel>
       </li>
     </ul>
@@ -16,11 +16,13 @@
 
 <script>
 import Panel from './components/shared/panel/Panel.vue';
+import imageResponsive from './components/shared/image-responsive/imageResponsive.vue';
 
 export default {
 
   components: {
-    'my-panel': Panel
+    'my-panel': Panel,
+    'image-responsive': imageResponsive
   },
 
   data(){
@@ -66,10 +68,6 @@ export default {
 
   .photoList .photo-list-item {
       display: inline-block;
-  }
-
-  .responsive-image {
-    width: 100%;
   }
 
   .filter {
