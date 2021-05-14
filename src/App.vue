@@ -2,9 +2,9 @@
   <div class="body">
     <h1 class="centralized">{{title}}</h1>
 
-    <input type="search" class="filter" placeholder="search for the title">
+    <input type="search" class="filter" v-on:input="filter = $event.target.value" placeholder="search for the title">
     <ul class="photoList">
-      <li class="photo-list-item" v-for="photo of photos">
+      <li class="photo-list-item" v-for="photo of photosFilter">
         <my-panel :title="photo.titulo">
           <img class="responsive-image" :src="photo.url" :alt="photo.title" />
         </my-panel>
@@ -26,7 +26,19 @@ export default {
   data(){
     return {
       title: 'Best Images',
-      photos: []
+      photos: [],
+      filter: ''
+    }
+  },
+
+  computed: {
+    photosFilter(){
+        if(this.filter){
+          let exp = new RegExp(this.filter.trim(), 'i');
+          return this.photos.filter(photo => exp.test(photo.titulo));
+        }else {
+          return this.photos;
+        }
     }
   },
 
