@@ -1,6 +1,8 @@
 <template>
   <div class="body">
     <h1 class="centralized">{{title}}</h1>
+
+    <input type="search" class="filter" placeholder="search for the title">
     <ul class="photoList">
       <li class="photo-list-item" v-for="photo of photos">
         <my-panel :title="photo.titulo">
@@ -55,6 +57,11 @@ export default {
   }
 
   .responsive-image {
+    width: 100%;
+  }
+
+  .filter {
+    display: block;
     width: 100%;
   }
 </style>
