@@ -2,7 +2,7 @@
   <div class="body">
     <h1 class="centralized">{{title}}</h1>
 
-    <input type="search" class="filter" v-on:input="filter = $event.target.value" placeholder="search for the title">
+    <input type="search" class="filter" @input="filter = $event.target.value" placeholder="search for the title">
     <ul class="photoList">
       <li class="photo-list-item" v-for="photo of photosFilter">
         <my-panel :title="photo.titulo">
