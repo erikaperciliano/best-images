@@ -1,10 +1,11 @@
 <template>
   <div class="panel">
     <h2 class="panel-title" @dblclick="visible = !visible">{{title}}</h2>
-    <div class="panel-container"  v-show="visible">
-      <slot></slot>
-    </div>
-
+    <transition name="panel-fade">
+      <div class="panel-container"  v-show="visible">
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -46,5 +47,19 @@ export default {
   * {
     box-shadow: 5px 5px 5px black;
   }
+
+  .panel-fade-enter, .panel-fade-leave-active {
+    opacity: 0;
+  }
+
+  .panel-fade-enter-active, .panel-fade-leave-active {
+    transition: opacity .4s;
+  }
+
 </style>
 
+ <!--
+    panel-fade-enter // antes do elemento ser incluído ou removido, o estadu atual
+    panel-fade-enter-active // quando o elemento está sendo concluído
+    panel-fade-leave-active // quando o elemento está sendo removido
+ -->
