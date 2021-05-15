@@ -64,6 +64,7 @@ export default {
 
   .photoList .photo-list-item {
       display: inline-block;
+      cursor: pointer;
   }
 
   .filter {
