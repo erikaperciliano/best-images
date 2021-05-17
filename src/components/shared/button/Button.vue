@@ -1,9 +1,17 @@
 <template>
-  <button class="button button-danger" :type="type">{{label}}</button>
+  <button @click="shootsAction()" class="button button-danger" :type="type">{{label}}</button>
 </template>
 <script>
 export default {
-  props: ['type', 'label']
+  props: ['type', 'label'],
+
+  methods: {
+    shootsAction(){
+      if(confirm('Confirm Operation?')){
+        this.$emit('buttonEnabled');
+      }
+    }
+  }
 }
 </script>
 <style>

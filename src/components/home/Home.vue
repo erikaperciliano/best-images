@@ -4,10 +4,10 @@
 
     <input type="search" class="filter" @input="filter = $event.target.value" placeholder="search for the title">
     <ul class="photoList">
-      <li class="photo-list-item" v-for="photo of photosFilter">
+      <li class="photo-list-item" v-for="photo of photosFilter" :key="photo.title">
         <my-panel :title="photo.titulo">
           <image-responsive :url="photo.url" :titulo="photo.titulo"/>
-          <my-button type="button" label="Remove" @click.native="remove(photo)"/>
+          <my-button type="button" label="Remove" @buttonEnabled="remove(photo)"/>
         </my-panel>
       </li>
     </ul>
@@ -49,9 +49,7 @@ export default {
 
   methods: {
     remove(photo){
-      if(confirm('Confirm operation?')){
-        alert(`Remove photo: ${photo.titulo}`)
-      }
+      alert(`Remove photo: ${photo.titulo}`)
     }
   },
 
