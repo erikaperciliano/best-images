@@ -14,7 +14,7 @@ export default {
       type: String
     },
 
-    confimation: Boolean,
+    confirmation: Boolean,
     estilo: String
   },
   methods: {
