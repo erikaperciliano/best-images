@@ -7,7 +7,7 @@
       <li class="photo-list-item" v-for="photo of photosFilter">
         <my-panel :title="photo.titulo">
           <image-responsive :url="photo.url" :titulo="photo.titulo"/>
-          <my-button type="button" label="Remove"/>
+          <my-button type="button" label="Remove" @click.native="remove(photo)"/>
         </my-panel>
       </li>
     </ul>
@@ -44,6 +44,14 @@ export default {
         }else {
           return this.photos;
         }
+    }
+  },
+
+  methods: {
+    remove(photo){
+      if(confirm('Confirm operation?')){
+        alert(`Remove photo: ${photo.titulo}`)
+      }
     }
   },
 
