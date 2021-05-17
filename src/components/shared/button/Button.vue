@@ -3,8 +3,20 @@
 </template>
 <script>
 export default {
-  props: ['type', 'label', 'confirmation', 'estilo'],
+  props: {
+    type: {
+      required: true,
+      type: String
+    },
 
+    label: {
+      required: true,
+      type: String
+    },
+
+    confimation: Boolean,
+    estilo: String
+  },
   methods: {
     shootsAction(){
       if(this.confirmation){
