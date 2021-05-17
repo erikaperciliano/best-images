@@ -1,15 +1,26 @@
 <template>
-  <button @click="shootsAction()" class="button button-danger" :type="type">{{label}}</button>
+  <button @click="shootsAction()" class="button" :class="styleButton" :type="type">{{label}}</button>
 </template>
 <script>
 export default {
-  props: ['type', 'label'],
+  props: ['type', 'label', 'confirmation', 'estilo'],
 
   methods: {
     shootsAction(){
-      if(confirm('Confirm Operation?')){
-        this.$emit('buttonEnabled');
+      if(this.confirmation){
+        if(confirm('Confirm Operation?')){
+          this.$emit('buttonEnabled');
+        }
+        return;
       }
+      this.$emit('buttonEnabled');
+    }
+  },
+
+  computed: {
+    styleButton(){
+      if(this.estilo == 'standard' || !this.estilo) return 'button-standard';
+      if(this.estilo == 'danger') return 'button-danger';
     }
   }
 }
