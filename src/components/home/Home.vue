@@ -6,7 +6,7 @@
     <ul class="photoList">
       <li class="photo-list-item" v-for="photo of photosFilter" :key="photo.title">
         <my-panel :title="photo.titulo">
-          <image-responsive v-my-transform.animation="15" :url="photo.url" :titulo="photo.titulo"/>
+          <image-responsive v-my-transform:scale.animation="1.2" :url="photo.url" :titulo="photo.titulo"/>
           <my-button
             type="button"
             label="Remove"
