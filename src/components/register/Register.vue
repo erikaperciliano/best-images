@@ -10,8 +10,7 @@
         <input
           id="title"
           autocomplete="off"
-          @input="photo.title = $event.target.value"
-          :value="photo.title"
+          v-model="photo.title"
         >
       </div>
 
@@ -20,10 +19,9 @@
         <input
           id="url"
           autocomplete="off"
-          @input="photo.url = $event.target.value"
-          :value="photo.url"
+          v-model="photo.url"
         >
-        <image-responsive/>
+        <image-responsive :url="photo.url" :title="photo.titulo"/>
       </div>
 
       <div class="control">
@@ -31,8 +29,7 @@
         <textarea
           id="description"
           autocomplete="off"
-          @input="photo.description = $event.target.value"
-          :value="photo.description"
+          v-model="photo.description"
         >
         </textarea>
       </div>
@@ -70,6 +67,7 @@ export default {
 
   methods: {
     record(){
+      console.log(this.photo)
       console.log('Enviar dados para a API');
 
       this.photo = {
