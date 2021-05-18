@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="centralized">{{title}}</h1>
-
+    <p v-show="message" class="centralized">{{message}}</p>
     <input type="search" class="filter" @input="filter = $event.target.value" placeholder="search for the title">
     <ul class="photoList">
       <li class="photo-list-item" v-for="photo of photosFilter" :key="photo.title">
@@ -38,7 +38,8 @@ export default {
     return {
       title: 'Best Images',
       photos: [],
-      filter: ''
+      filter: '',
+      message:''
     }
   },
 
@@ -55,7 +56,16 @@ export default {
 
   methods: {
     remove(photo){
-      alert(`Remove photo: ${photo.titulo}`)
+      this.$http
+        .delete(`http://localhost:3000/v1/fotos/${photo._id}`)
+        .then(() => {
+            let index = this.photos.indexOf(photo);
+            this.photos.splice(index, 1); // remove item of an array
+            this.message = 'Photo removed successfully!'
+          }, err => {
+              console.log(err);
+              this.message = 'Couldnt remove photo';
+        })
     }
   },
 
