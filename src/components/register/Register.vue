@@ -4,21 +4,34 @@
     <h1 class="centralized">Cadastro</h1>
     <h2 class="centralized"></h2>
 
-    <form>
+    <form @submit.prevent="record()">
       <div class="control">
         <label for="title">TÍTULO</label>
-        <input id="title" autocomplete="off">
+        <input
+          id="title"
+          autocomplete="off"
+          @input="photo.title = $event.target.value"
+        >
       </div>
 
       <div class="control">
         <label for="url">URL</label>
-        <input id="url" autocomplete="off">
+        <input
+          id="url"
+          autocomplete="off"
+          @input="photo.url = $event.target.value"
+        >
         <image-responsive/>
       </div>
 
       <div class="control">
         <label for="description">DESCRIÇÃO</label>
-        <textarea id="description" autocomplete="off"></textarea>
+        <textarea
+          id="description"
+          autocomplete="off"
+          @input="photo.description = $event.target.value"
+        >
+        </textarea>
       </div>
 
       <div class="centralized">
@@ -38,9 +51,24 @@ import Button from '../shared/button/Button.vue';
 export default {
 
   components: {
-
     'image-responsive': ImageResponsive,
     'my-button': Button
+  },
+
+  data(){
+    return {
+      photo: {
+        title: '',
+        url:'',
+        description: ''
+      }
+    }
+  },
+
+  methods: {
+    record(){
+      console.log(this.photo);
+    }
   }
 }
 
