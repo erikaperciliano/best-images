@@ -51,6 +51,7 @@
 
 import ImageResponsive from '../shared/image-responsive/ImageResponsive.vue'
 import Button from '../shared/button/Button.vue';
+import Photo from '../../domain/photo/Photo';
 
 export default {
 
@@ -61,11 +62,7 @@ export default {
 
   data(){
     return {
-      photo: {
-        title: '',
-        url:'',
-        description: ''
-      }
+      photo: new Photo()
     }
   },
 
@@ -74,11 +71,7 @@ export default {
       console.log(this.photo)
       console.log('Enviar dados para a API');
 
-      this.photo = {
-        title: '',
-        url: '',
-        description: ''
-      }
+      this.photo = new Photo();
     }
   }
 }
