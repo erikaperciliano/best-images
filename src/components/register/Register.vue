@@ -10,7 +10,7 @@
         <input
           id="title"
           autocomplete="off"
-          v-model.lazy="photo.title"
+          v-model.lazy="photo.titulo"
         >
       </div>
 
@@ -68,10 +68,9 @@ export default {
 
   methods: {
     record(){
-      console.log(this.photo)
-      console.log('Enviar dados para a API');
-
-      this.photo = new Photo();
+      this.$http
+        .post('http://localhost:3000/v1/fotos', this.photo)
+        .then(() => this.photo = new Photo(), err => console.log(err));
     }
   }
 }

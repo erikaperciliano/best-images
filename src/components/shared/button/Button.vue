@@ -1,11 +1,10 @@
 <template>
-  <button @click="shootsAction()" class="button" :class="styleButton" :type="type">{{label}}</button>
-</template>
+  <button @click="shootsAction()" class="button" :class="styleButton" :type="tipo">{{label}}</button>
+</template>tipo
 <script>
 export default {
   props: {
-    type: {
-      required: true,
+    tipo: {
       type: String
     },
 

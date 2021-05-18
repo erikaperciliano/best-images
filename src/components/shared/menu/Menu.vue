@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li v-for="route in routes">
+      <li v-for="route in routes" :key="route.title">
         <router-link :to="route.path ? route.path : '/'">
           {{route.title}}
         </router-link>
