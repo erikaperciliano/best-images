@@ -11,6 +11,7 @@
           id="title"
           autocomplete="off"
           @input="photo.title = $event.target.value"
+          :value="photo.title"
         >
       </div>
 
@@ -20,6 +21,7 @@
           id="url"
           autocomplete="off"
           @input="photo.url = $event.target.value"
+          :value="photo.url"
         >
         <image-responsive/>
       </div>
@@ -30,6 +32,7 @@
           id="description"
           autocomplete="off"
           @input="photo.description = $event.target.value"
+          :value="photo.description"
         >
         </textarea>
       </div>
@@ -67,7 +70,13 @@ export default {
 
   methods: {
     record(){
-      console.log(this.photo);
+      console.log('Enviar dados para a API');
+
+      this.photo = {
+        title: '',
+        url: '',
+        description: ''
+      }
     }
   }
 }
