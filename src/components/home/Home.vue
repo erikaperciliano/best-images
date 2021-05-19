@@ -23,15 +23,16 @@
 
 <script>
 import Panel from '../shared/panel/Panel.vue';
-import imageResponsive from '../shared/image-responsive/imageResponsive.vue';
-import Button from '../shared/button/Button.vue'
+import imageResponsive from '../shared/imageResponsive/imageResponsive.vue';
+import Button from '../shared/button/Button.vue';
+import PhotoService from '../../domain/photo/PhotoService';
 
 export default {
 
   components: {
     'my-panel': Panel,
     'image-responsive': imageResponsive,
-    'my-button': Button
+    'my-button': Button,
   },
 
   data(){
@@ -56,22 +57,23 @@ export default {
 
   methods: {
     remove(photo){
-      this.$http
-        .delete(`v1/fotos/${photo._id}`)
+      this.service.delete(photo._id)
         .then(() => {
-            let index = this.photos.indexOf(photo);
-            this.photos.splice(index, 1); // remove item of an array
-            this.message = 'Photo removed successfully!'
+          let index = this.photos.indexOf(photo);
+          this.photos.splice(index, 1); // remove item of an array
+          this.message = 'Photo removed successfully!'
           }, err => {
-              console.log(err);
-              this.message = 'Couldnt remove photo';
+            console.log(err);
+            this.message = 'Couldnt remove photo';
         })
     }
   },
 
   created() {
-    this.$http.get('v1/fotos')
-      .then(res => res.json())
+    this.service = new PhotoService(this.$resource);
+
+    this.service
+      .list()
       .then(fotos => this.photos = fotos, err => console.log(err));
   }
 }
