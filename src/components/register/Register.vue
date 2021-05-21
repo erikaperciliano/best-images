@@ -40,7 +40,7 @@
 
       <div class="centralized">
         <my-button label="RECORD" tipo="submit"/>
-        <router-link to="/"><my-button label="Back" tipo="button"/></router-link>
+        <router-link :to="{name: 'home'}"><my-button label="Back" tipo="button"/></router-link>
       </div>
 
     </form>
