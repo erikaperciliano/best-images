@@ -49,7 +49,7 @@
 
 <script>
 
-import ImageResponsive from '../shared/imageResponsive/ImageResponsive.vue'
+import ImageResponsive from '../shared/imageResponsive/ImageResponsive'
 import Button from '../shared/button/Button.vue';
 import Photo from '../../domain/photo/Photo';
 import PhotoService from '../../domain/photo/PhotoService';
@@ -69,9 +69,13 @@ export default {
 
   methods: {
     record(){
-      this.service
+      this.$http
+        .post('http://localhost:3000/v1/fotos', this.photo)
+        .then(() => this.photo = new Photo(), err => console.log(err))
+
+      /*this.service
         .register(this.photo)
-        .then(() => this.photo = new Photo(), err => console.log(err));
+        .then(() => this.photo = new Photo(), err => console.log(err));*/
     },
 
     created(){

@@ -23,7 +23,7 @@
 
 <script>
 import Panel from '../shared/panel/Panel.vue';
-import imageResponsive from '../shared/imageResponsive/imageResponsive.vue';
+import imageResponsive from '../shared/imageResponsive/imageResponsive';
 import Button from '../shared/button/Button.vue';
 import PhotoService from '../../domain/photo/PhotoService';
 
