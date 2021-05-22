@@ -63,25 +63,29 @@ export default {
 
   data(){
     return {
-      photo: new Photo()
+      photo: new Photo(),
+      id: this.$route.params.id
     }
   },
 
   methods: {
     record(){
-      this.$http
-        .post('http://localhost:3000/v1/fotos', this.photo)
-        .then(() => this.photo = new Photo(), err => console.log(err))
-
-      /*this.service
+      this.service
         .register(this.photo)
-        .then(() => this.photo = new Photo(), err => console.log(err));*/
+        .then(() => this.photo = new Photo(), err => console.log(err));
     },
+  },
 
-    created(){
+  created(){
       this.service = new PhotoService(this.$resource);
+
+      if(this.id){
+        console.log('Cai na validação!')
+        this.service
+          .search(this.id)
+          .then(photo => this.photo = photo);
+      }
     }
-  }
 }
 
 </script>

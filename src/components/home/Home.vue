@@ -43,7 +43,7 @@ export default {
       title: 'Best Images',
       photos: [],
       filter: '',
-      message:''
+      message:'',
     }
   },
 
