@@ -1,12 +1,14 @@
 <template>
 
   <div>
-    <h1 class="centralized">Cadastro</h1>
-    <h2 class="centralized"></h2>
+    <h1 class="centralized">Register</h1>
+
+    <h2 v-if="photo._id" class="centralized">Changing {{photo.titulo }} </h2>
+    <h2 v-else class="centralized">Including</h2>
 
     <form @submit.prevent="record()">
       <div class="control">
-        <label for="title">TÍTULO</label>
+        <label for="title">Title</label>
         <input
           id="title"
           autocomplete="off"
@@ -29,7 +31,7 @@
       </div>
 
       <div class="control">
-        <label for="description">DESCRIÇÃO</label>
+        <label for="description">Description</label>
         <textarea
           id="description"
           autocomplete="off"
