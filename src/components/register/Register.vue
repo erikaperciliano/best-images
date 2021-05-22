@@ -10,19 +10,22 @@
       <div class="control">
         <label for="title">Title</label>
         <input
-          id="title"
+          data-vv-as="title" name="title" v-validate data-vv-rules="required|min:3|max:30"
           autocomplete="off"
-          v-model.lazy="photo.titulo"
+          v-model="photo.titulo"
         >
+        <span class="erro" v-show="errors.has('title')">{{errors.first('title')}}</span>
       </div>
 
       <div class="control">
         <label for="url">URL</label>
         <input
+          name="url" v-validate data-vv-rules="required"
           id="url"
           autocomplete="off"
-          v-model.lazy="photo.url"
+          v-model="photo.url"
         >
+        <span class="erro" v-show="errors.has('url')">{{errors.first('url')}}</span>
         <image-responsive
           v-show="photo.url"
           :url="photo.url"
@@ -117,6 +120,10 @@ export default {
 
   .centralized {
     text-align: center;
+  }
+
+  .erro {
+    color:red;
   }
 
 </style>
