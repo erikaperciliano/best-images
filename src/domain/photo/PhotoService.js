@@ -6,7 +6,10 @@ export default class PhotoService {
   list(){
     return this._resource
       .query()
-      .then(res => res.json());
+      .then(res => res.json(), err => {
+        console.log(err);
+        throw new Error('Couldnt get the photos. Try later!');
+      });
   }
 
   register(photo){
@@ -20,7 +23,12 @@ export default class PhotoService {
   }
 
   delete(id){
-    return this._resource.delete({ id });
+    return this._resource
+      .delete({ id })
+      .then(null, err => {
+        console.log(err);
+        throw new Error('Couldnt remove photo!');
+      })
   }
 
   search(id){

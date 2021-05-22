@@ -65,10 +65,7 @@ export default {
           let index = this.photos.indexOf(photo);
           this.photos.splice(index, 1); // remove item of an array
           this.message = 'Photo removed successfully!'
-          }, err => {
-            console.log(err);
-            this.message = 'Couldnt remove photo';
-        })
+          }, err => this.message = err.message);
     }
   },
 
@@ -77,7 +74,7 @@ export default {
 
     this.service
       .list()
-      .then(fotos => this.photos = fotos, err => console.log(err));
+      .then(fotos => this.photos = fotos, err => this.message = err.message);
   }
 }
 </script>
