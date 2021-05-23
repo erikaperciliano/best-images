@@ -8,6 +8,7 @@ import VeeValidate from 'vee-validate';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/teste.css';
+import './assets/js/teste.js';
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
